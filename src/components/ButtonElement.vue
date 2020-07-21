@@ -95,7 +95,16 @@ export default {
 <style>
 .c-button {
   border-radius: 6px;
-  border: 0;
+  padding: 8px 16px;
+}
+
+.c-button--default {
+  background-color: #e0e0e0;
+}
+
+.c-button--default:hover:enabled,
+.c-button--default:focus:enabled {
+  background-color: #aeaeae;
 }
 
 .c-button--outline {
@@ -104,9 +113,9 @@ export default {
   cursor: pointer;
 }
 
-.c-button:hover:enabled,
-.c-button:focus:enabled {
-  opacity: 0.6;
+.c-button--outline:hover:enabled,
+.c-button--outline:focus:enabled {
+  background-color: #2962ff1a;
 }
 
 .c-button--text {
@@ -115,9 +124,13 @@ export default {
   cursor: pointer;
 }
 
+.c-button--text:hover:enabled,
+.c-button--text:focus:enabled {
+  background-color: #2962ff1a;
+}
+
 .c-button--disbale-shadow {
   border: none;
-  background-color: blue;
 }
 
 .c-button--primary {
@@ -137,14 +150,29 @@ export default {
 }
 
 .c-button--color-primary {
-  background-color: blue;
+  background-color: #2962ff;
+}
+
+.c-button--color-primary:hover:enabled,
+.c-button--color-primary:focus:enabled {
+  background-color: #0039cb;
 }
 
 .c-button--color-secandory {
-  background-color: slategray;
+  background-color: #455a64;
+}
+
+.c-button--color-secandory:hover:enabled,
+.c-button--color-secandory:focus:enabled {
+  background-color: #1c313a;
 }
 
 .c-button--color-danger {
-  background-color: red;
+  background-color: #d33131;
+}
+
+.c-button--color-danger:hover:enabled,
+.c-button--color-danger:focus:enabled {
+  background-color: #990008;
 }
 </style>
