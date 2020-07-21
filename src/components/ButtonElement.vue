@@ -8,68 +8,14 @@
 
 <script>
 export default {
-  data() {
-    return {};
-  },
   computed: {
-    buttonTypeClass() {
-      let cssClass;
-
-      switch (this.variant) {
-        case "outline":
-          cssClass = "c-button--outline";
-          break;
-        case "text":
-          cssClass = "c-button--text";
-          break;
-        default:
-          cssClass = "c-button--default";
-      }
-
-      return cssClass;
-    },
-    buttonSizeClass() {
-      let cssClass;
-
-      switch (this.size) {
-        case "sm":
-          cssClass = "c-button--small-size";
-          break;
-        case "lg":
-          cssClass = "c-button--large-size";
-          break;
-        default:
-          cssClass = "c-button--middle-size";
-      }
-
-      return cssClass;
-    },
-    buttonColorClass() {
-      let cssClass;
-
-      switch (this.color) {
-        case "primary":
-          cssClass = "c-button--color-primary";
-          break;
-        case "secandory":
-          cssClass = "c-button--color-secandory";
-          break;
-        case "danger":
-          cssClass = "c-button--color-danger";
-          break;
-        default:
-          cssClass = "c-button--color-default";
-      }
-
-      return cssClass;
-    },
     buttonClasses() {
       let classes = this.class ? this.class.split(" ") : [];
 
       classes.push("c-button");
-      classes.push(this.buttonTypeClass);
-      classes.push(this.buttonSizeClass);
-      classes.push(this.buttonColorClass);
+      classes.push(getButtonTypeClass(this.variant));
+      classes.push(getButtonSizeClass(this.size));
+      classes.push(getButtonColorClass(this.color));
 
       if (this.disableShadow) {
         classes.push("c-button--disbale-shadow");
@@ -90,6 +36,60 @@ export default {
     endIcon: String
   }
 };
+
+function getButtonTypeClass(variant) {
+  let cssClass;
+
+  switch (variant) {
+    case "outline":
+      cssClass = "c-button--outline";
+      break;
+    case "text":
+      cssClass = "c-button--text";
+      break;
+    default:
+      cssClass = "c-button--default";
+  }
+
+  return cssClass;
+}
+
+function getButtonSizeClass(size) {
+  let cssClass;
+
+  switch (size) {
+    case "sm":
+      cssClass = "c-button--small-size";
+      break;
+    case "lg":
+      cssClass = "c-button--large-size";
+      break;
+    default:
+      cssClass = "c-button--middle-size";
+  }
+
+  return cssClass;
+}
+
+function getButtonColorClass(color) {
+  let cssClass;
+
+  switch (color) {
+    case "primary":
+      cssClass = "c-button--color-primary";
+      break;
+    case "secandory":
+      cssClass = "c-button--color-secandory";
+      break;
+    case "danger":
+      cssClass = "c-button--color-danger";
+      break;
+    default:
+      cssClass = "c-button--color-default";
+  }
+
+  return cssClass;
+}
 </script>
 
 <style>
