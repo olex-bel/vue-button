@@ -8,7 +8,17 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    beforeEnter: (to, from, next) => {
+      const redirect = sessionStorage.getItem('redirect');
+
+      if (redirect !== null) {
+        sessionStorage.removeItem('redirect');
+        next(redirect);
+      } else {
+        next();
+      }
+    }
   },
   {
     path: '/buttons',
