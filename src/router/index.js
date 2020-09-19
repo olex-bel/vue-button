@@ -28,6 +28,14 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "buttons" */ '../views/Buttons.vue')
   },
+  {
+    path: '/windbnb',
+    name: 'Windbnb Demo',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "buttons" */ '../views/Windbnb.vue')
+  },
   { path: "/404", component: () => import(/* webpackChunkName: "buttons" */ '../views/PageNotFound.vue') },
   { path: "*", component: () => import(/* webpackChunkName: "buttons" */ '../views/PageNotFound.vue') },
 ]
