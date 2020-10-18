@@ -1,0 +1,34 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
+import properties from "@/data/stays.json";
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  state: {
+    country: 'Finland',
+    city: null,
+    guests: null,
+    properties: properties
+  },
+  getters: {
+    getCities: function (state) {
+      const cities = state.properties.filter((item) => {
+        return item.country === state.country;
+      }).map((item) => {
+        return item.city;
+      });
+
+      const citiesSet = new Set(cities);
+
+      return [...citiesSet];
+    },
+
+  },
+  mutations: {
+  },
+  actions: {
+  },
+  modules: {
+  }
+})

@@ -1,17 +1,21 @@
 <template>
-  <PropertyGrid :items="properties" />
+  <div>
+    <PropertyFilterBar />
+    <PropertyGrid :items="properties" />
+  </div>
 </template>
 
 <script>
-import sourceData from "@/data/stays.json";
 import PropertyGrid from "@/components/PropertyGrid";
+import PropertyFilterBar from "@/components/PropertyFilterBar";
 export default {
   components: {
     PropertyGrid,
+    PropertyFilterBar,
   },
   data() {
     return {
-      properties: sourceData,
+      properties: this.$store.state.properties,
     };
   },
 };
