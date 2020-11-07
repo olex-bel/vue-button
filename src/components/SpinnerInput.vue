@@ -45,9 +45,7 @@ export default {
 
 <style scoped>
 .spinnerinput--container {
-  width: auto;
   display: flex;
-  justify-content: center;
   height: 20px;
 }
 
@@ -57,6 +55,7 @@ export default {
   border: black;
   border-style: solid;
   border-width: 1px;
+  text-align: center;
 }
 
 .spinnerinput--input-number {

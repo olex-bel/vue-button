@@ -1,6 +1,10 @@
 <template>
   <div class="selector--container" v-click-outside="close">
-    <div class="selector--select" @click="open">
+    <div
+      class="selector--select"
+      @click="open"
+      :class="isActive ? 'selector--select-active' : ''"
+    >
       <div class="selector--label">{{ label }}</div>
       <div class="selector--value">{{ displayValue }}</div>
     </div>
@@ -81,8 +85,15 @@ export default {
 </script>
 
 <style scoped>
+.selector--container {
+  position: relative;
+}
+
 .selector--select {
   width: auto;
+}
+
+.selector--select-active {
   border: 1px solid #000000;
   border-radius: 16px;
   -moz-border-radius: 16px;
@@ -112,6 +123,9 @@ export default {
 }
 
 .options--container {
+  position: absolute;
+  z-index: 99;
+  border-width: 1px;
   width: 100%;
   text-align: left;
 }

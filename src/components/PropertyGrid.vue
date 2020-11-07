@@ -23,10 +23,23 @@ export default {
 </script>
 
 <style scoped>
-.property-grid--container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  grid-gap: 15px 10px;
-  justify-items: center;
+@media only screen and (max-width: 600px) {
+  .property-grid--container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 15px 10px;
+    justify-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .property-grid--container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 15px 10px;
+    justify-items: center;
+    flex-wrap: wrap;
+  }
 }
 </style>

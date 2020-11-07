@@ -12,6 +12,9 @@ export default new Vuex.Store({
     properties: properties
   },
   getters: {
+    country: function (state) {
+      return state.country;
+    },
     getCities: function (state) {
       const cities = state.properties.filter((item) => {
         return item.country === state.country;
@@ -24,10 +27,35 @@ export default new Vuex.Store({
       return [...citiesSet];
     },
 
+    getFilteredProperties: function (state) {
+      return state.properties.filter((item) => {
+        return (item.country === state.country) && (!state.city || item.city === state.city) && (!state.guests || state.guests <= item.maxGuests);
+      });
+    },
+
+    selectedNumberOfGuests: function (state) {
+      return state.guests;
+    },
+
   },
   mutations: {
+    updateFilterCity: (state, city) => {
+      state.city = city;
+    },
+    updateFilterNumberOfGuests: (state, { guests }) => {
+      state.guests = guests;
+    }
   },
   actions: {
+    updateFilters: ({ commit }, { city, guests }) => {
+      if (city) {
+        commit('updateFilterCity', city);
+      }
+
+      if (guests) {
+        commit('updateFilterNumberOfGuests', { guests: guests });
+      }
+    }
   },
   modules: {
   }

@@ -1,15 +1,21 @@
 <template>
   <div class="property-tile--container">
-    <img class="property-tile--image" :src="property.photo" :alt="property.title" />
+    <img
+      class="property-tile--image"
+      :src="property.photo"
+      :alt="property.title"
+    />
     <div class="property-tile--info">
-      <div class="property-tile--badge" v-if="property.superHost">Super Host</div>
-      <div class="property-tile--type">{{type}}</div>
+      <div class="property-tile--badge" v-if="property.superHost">
+        Super Host
+      </div>
+      <div class="property-tile--type">{{ type }}</div>
       <div class="property-tile--raiting">
         <i class="material-icons orange600">star</i>
-        <span class="property-tile--ratingnumber">{{rating}}</span>
+        <span class="property-tile--ratingnumber">{{ rating }}</span>
       </div>
     </div>
-    <div class="property-tile--title">{{property.title}}</div>
+    <div class="property-tile--title">{{ property.title }}</div>
   </div>
 </template>
 
@@ -40,8 +46,16 @@ export default {
 </script>
 
 <style scoped>
-.property-tile--container {
-  width: 400px;
+@media only screen and (max-width: 600px) {
+  .property-tile--container {
+    width: 300px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .property-tile--container {
+    width: 400px;
+  }
 }
 
 .property-tile--image {
