@@ -1,16 +1,16 @@
 <template>
-  <div class="spinnerinput--container">
-    <div class="spinnerinput--button disable-select" @click="decrement">
-      <span class="spinnerinput--decrement">-</span>
+  <div class="spinnerinput">
+    <div class="spinnerinput__button disable-select" @click="decrement">
+      <span class="spinnerinput__decrement">-</span>
     </div>
     <input
-      class="spinnerinput--input-number"
+      class="spinnerinput__input"
       type="number"
       v-model.number="value"
       min="0"
     />
-    <div class="spinnerinput--button disable-select" @click="increment">
-      <span class="spinnerinput--increment">+</span>
+    <div class="spinnerinput__button disable-select" @click="increment">
+      <span class="spinnerinput__increment">+</span>
     </div>
   </div>
 </template>
@@ -44,12 +44,12 @@ export default {
 </script>
 
 <style scoped>
-.spinnerinput--container {
+.spinnerinput {
   display: flex;
   height: 20px;
 }
 
-.spinnerinput--button {
+.spinnerinput__button {
   line-height: calc(40px / 2 - 5px);
   width: 24px;
   border: black;
@@ -58,7 +58,7 @@ export default {
   text-align: center;
 }
 
-.spinnerinput--input-number {
+.spinnerinput__input {
   -webkit-appearance: none;
   -moz-appearance: textfield;
   width: 40px;
@@ -71,8 +71,8 @@ export default {
   border: none;
 }
 
-.spinnerinput--decrement,
-.spinnerinput--increment {
+.spinnerinput__decrement,
+.spinnerinput__increment {
   text-align: center;
   font-weight: bold;
   cursor: pointer;

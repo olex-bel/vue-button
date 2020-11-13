@@ -1,17 +1,17 @@
 <template>
-  <div class="selector--container" v-click-outside="close">
+  <div class="selector" v-click-outside="close">
     <div
-      class="selector--select"
-      @click="open"
-      :class="isActive ? 'selector--select-active' : ''"
+      class="selector__header"
+      @click="toggle"
+      :class="isActive ? 'selector__header-active' : ''"
     >
-      <div class="selector--label">{{ label }}</div>
-      <div class="selector--value">{{ displayValue }}</div>
+      <div class="selector__label">{{ label }}</div>
+      <div class="selector__value">{{ displayValue }}</div>
     </div>
-    <div class="options--container" v-if="isActive">
+    <div class="selector__options" v-if="isActive">
       <ul>
         <li
-          class="options--item"
+          class="selector__optionitem"
           v-for="(item, index) in items"
           v-bind:value="item.value"
           :key="index"
@@ -70,6 +70,9 @@ export default {
     close: function () {
       this.isActive = false;
     },
+    toggle: function () {
+      this.isActive = !this.isActive;
+    },
     select: function (index) {
       const selectedItem = this.items[index];
 
@@ -85,15 +88,15 @@ export default {
 </script>
 
 <style scoped>
-.selector--container {
+.selector {
   position: relative;
 }
 
-.selector--select {
+.selector__header {
   width: auto;
 }
 
-.selector--select-active {
+.selector__header-active {
   border: 1px solid #000000;
   border-radius: 16px;
   -moz-border-radius: 16px;
@@ -101,7 +104,26 @@ export default {
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
 }
 
-.selector--label {
+@media only screen and (max-width: 600px) {
+  .selector__header:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #000 transparent transparent transparent;
+  }
+
+  /* Point the arrow upwards when the select box is open (active): */
+  .selector__header.selector__header-active:after {
+    border-color: transparent transparent #000 transparent;
+    top: 7px;
+  }
+}
+
+.selector__label {
   padding: 5px 15px 0px 15px;
   text-align: left;
   font-family: Mulish;
@@ -111,7 +133,7 @@ export default {
   color: #333333;
 }
 
-.selector--value {
+.selector__value {
   padding: 0px 15px 5px 15px;
   text-align: left;
   font-family: Mulish;
@@ -122,19 +144,20 @@ export default {
   color: #333333;
 }
 
-.options--container {
+.selector__options {
   position: absolute;
   z-index: 99;
   border-width: 1px;
   width: 100%;
   text-align: left;
+  background-color: #ffffff;
 }
 
-.options--item {
+.selector__optionitem {
   list-style: none;
 }
 
-.options--item:hover {
+.selector__optionitem:hover {
   background-color: #aeaeae;
 }
 </style>

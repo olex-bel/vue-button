@@ -4,7 +4,7 @@ import { shallowMount } from '@vue/test-utils'
 import PropertyTile from "@/components/PropertyTile";
 
 describe('PropertyTile.vue', () => {
-    it('should contains property-tile--container', () => {
+    it('should contains propertytile', () => {
         const wrapper = shallowMount(PropertyTile, {
             propsData: {
                 property: {
@@ -12,7 +12,7 @@ describe('PropertyTile.vue', () => {
                 }
             }
         });
-        expect(wrapper.classes('property-tile--container')).that.is.true;
+        expect(wrapper.classes('propertytile')).that.is.true;
     });
 
     describe('rating', () => {

@@ -8,14 +8,23 @@ export default new Vuex.Store({
   state: {
     country: 'Finland',
     city: null,
-    guests: null,
+    adults: null,
+    children: null,
     properties: properties
   },
   getters: {
     country: function (state) {
       return state.country;
     },
-    getCities: function (state) {
+
+    guests: function (state) {
+      let adults = state.adults || 0;
+      let children = state.children || 0;
+
+      return adults + children;
+    },
+
+    cities: function (state) {
       const cities = state.properties.filter((item) => {
         return item.country === state.country;
       }).map((item) => {
@@ -27,36 +36,38 @@ export default new Vuex.Store({
       return [...citiesSet];
     },
 
-    getFilteredProperties: function (state) {
+    filteredProperties: function (state, { guests }) {
       return state.properties.filter((item) => {
-        return (item.country === state.country) && (!state.city || item.city === state.city) && (!state.guests || state.guests <= item.maxGuests);
+        return (item.country === state.country) && (!state.city || item.city === state.city) && (!guests || guests <= item.maxGuests);
       });
     },
 
-    selectedNumberOfGuests: function (state) {
+    numberOfGuests: function (state) {
       return state.guests;
     },
 
+    location: function (state) {
+      return (state.country && state.city) ? state.country + ', ' + state.city : null;
+    },
   },
   mutations: {
     updateFilterCity: (state, city) => {
       state.city = city;
     },
-    updateFilterNumberOfGuests: (state, { guests }) => {
-      state.guests = guests;
+    updateFilterNumberOfGuests: (state, { adults, children }) => {
+      state.adults = adults;
+      state.children = children;
     }
   },
   actions: {
-    updateFilters: ({ commit }, { city, guests }) => {
+    updateFilters: ({ commit }, { city, adults, children }) => {
       if (city) {
         commit('updateFilterCity', city);
       }
 
-      if (guests) {
-        commit('updateFilterNumberOfGuests', { guests: guests });
+      if (adults) {
+        commit('updateFilterNumberOfGuests', { adults: adults, children: children });
       }
     }
   },
-  modules: {
-  }
 })
