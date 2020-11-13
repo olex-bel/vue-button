@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link>|
-      <router-link to="/buttons">Buttons Demo</router-link>
+      <router-link to="/buttons">Buttons Demo</router-link>|
       <router-link to="/windbnb">Windbnb Demo</router-link>
     </div>
     <router-view />
