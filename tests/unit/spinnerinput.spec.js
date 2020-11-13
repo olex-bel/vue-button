@@ -4,9 +4,9 @@ import { shallowMount } from '@vue/test-utils'
 import SpinnerInput from "@/components/SpinnerInput";
 
 describe('SpinnerInput.vue', () => {
-    it('should contains spinnerinput--container', () => {
+    it('should contains spinnerinput', () => {
         const wrapper = shallowMount(SpinnerInput, {});
-        expect(wrapper.classes('spinnerinput--container')).that.is.true;
+        expect(wrapper.classes('spinnerinput')).that.is.true;
     });
 
     it('should set default value if it is provided', () => {
@@ -20,7 +20,7 @@ describe('SpinnerInput.vue', () => {
 
     it('should increment value on click by increment button click', async () => {
         const wrapper = shallowMount(SpinnerInput, {});
-        const button = wrapper.find('.spinnerinput--increment');
+        const button = wrapper.find('.spinnerinput__increment');
 
         await button.trigger('click')
 
@@ -34,7 +34,7 @@ describe('SpinnerInput.vue', () => {
                 defaultValue: 5
             }
         });
-        const button = wrapper.find('.spinnerinput--decrement');
+        const button = wrapper.find('.spinnerinput__decrement');
 
         await button.trigger('click')
 
@@ -44,7 +44,7 @@ describe('SpinnerInput.vue', () => {
 
     it('should not change value if it is 0 by decrement button click', async () => {
         const wrapper = shallowMount(SpinnerInput, {});
-        const button = wrapper.find('.spinnerinput--decrement');
+        const button = wrapper.find('.spinnerinput__decrement');
 
         await button.trigger('click')
 

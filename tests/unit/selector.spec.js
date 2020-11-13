@@ -4,14 +4,14 @@ import { shallowMount } from '@vue/test-utils'
 import Selector from "@/components/Selector";
 
 describe('Selector.vue', () => {
-    it('should contains selector--container', () => {
+    it('should contains selector', () => {
         const wrapper = shallowMount(Selector, {
             propsData: {
                 items: [],
                 label: 'test'
             }
         });
-        expect(wrapper.classes('selector--container')).that.is.true;
+        expect(wrapper.classes('selector')).that.is.true;
     });
 
     it('should show placeholder if default value is not provided', () => {

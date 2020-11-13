@@ -1,21 +1,21 @@
 <template>
-  <div class="property-tile--container">
+  <div class="propertytile">
     <img
-      class="property-tile--image"
+      class="propertytile__image"
       :src="property.photo"
       :alt="property.title"
     />
-    <div class="property-tile--info">
-      <div class="property-tile--badge" v-if="property.superHost">
+    <div class="propertytile__info">
+      <div class="propertytile__badge" v-if="property.superHost">
         Super Host
       </div>
-      <div class="property-tile--type">{{ type }}</div>
-      <div class="property-tile--raiting">
+      <div class="propertytile__type">{{ type }}</div>
+      <div class="propertytile__raiting">
         <i class="material-icons orange600">star</i>
-        <span class="property-tile--ratingnumber">{{ rating }}</span>
+        <span class="propertytile__ratingnumber">{{ rating }}</span>
       </div>
     </div>
-    <div class="property-tile--title">{{ property.title }}</div>
+    <div class="propertytile__title">{{ property.title }}</div>
   </div>
 </template>
 
@@ -46,26 +46,25 @@ export default {
 </script>
 
 <style scoped>
-@media only screen and (max-width: 600px) {
-  .property-tile--container {
-    width: 300px;
-  }
+.propertytile {
+  width: 300px;
 }
 
-@media only screen and (min-width: 600px) {
-  .property-tile--container {
+@media only screen and (min-width: 601px) {
+  .propertytile {
     width: 400px;
   }
 }
 
-.property-tile--image {
+.propertytile__image {
   width: 100%;
   height: 270px;
   border-radius: 30px;
   padding-bottom: 10px;
   object-fit: cover;
 }
-.property-tile--badge {
+
+.propertytile__badge {
   font-size: 12px;
   text-transform: uppercase;
   border-style: solid;
@@ -74,30 +73,34 @@ export default {
   padding: 5px 10px 5px 10px;
   font-weight: bold;
 }
-.property-tile--info {
+
+.propertytile__info {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.property-tile--type {
+
+.propertytile__type {
   color: grey;
 }
-.property-tile--title {
+.propertytile__title {
   text-align: left;
   padding-top: 5px;
 }
-.property-tile--raiting {
+.propertytile__raiting {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-.property-tile--ratingnumber {
+
+.propertytile__ratingnumber {
   display: inline-block;
   font-size: 14px;
   font-weight: normal;
   font-style: normal;
   line-height: 1;
 }
+
 .material-icons.orange600 {
   color: #fb8c00;
 }

@@ -1,69 +1,75 @@
 <template>
-  <div class="windbnb--container">
-    <div class="windbnb--header">
+  <div class="windbnb">
+    <div class="windbnb__header">
       <img
-        class="windbnb--logo"
+        class="windbnb__logo"
         src="../assets/windbnb_logo.png"
         alt="Windbnd"
       />
-      <PropertyFilters />
+      <SelectedFilters />
     </div>
-    <div class="windbnb--info">
-      <div class="windbnb--info-country">
+    <div class="windbnb__info">
+      <div class="windbnb__selectedcountry">
         Stays in {{ $store.getters.country }}
       </div>
-      <div class="windbnb--info-resultCount">
-        {{ $store.getters.getFilteredProperties.length }} stays
+      <div class="windbnb__resultсount">
+        {{ filteredProperties.length }} stays
       </div>
     </div>
-    <PropertyGrid :items="$store.getters.getFilteredProperties" />
+    <PropertyGrid :items="filteredProperties" />
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import PropertyGrid from "@/components/PropertyGrid";
-import PropertyFilters from "@/components/PropertyFilters";
+import SelectedFilters from "@/components/SelectedFilters";
 export default {
   components: {
     PropertyGrid,
-    PropertyFilters,
+    SelectedFilters,
   },
-  data() {
-    return {
-      properties: this.$store.getters.getFilteredProperties,
-    };
+  computed: {
+    ...mapGetters(["filteredProperties"]),
   },
 };
 </script>
 
 <style scoped>
+.windbnb {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 @media only screen and (max-width: 600px) {
-  .windbnb--container {
-    margin-left: 1rem;
-    margin-right: 1rem;
+  .windbnb__header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 
-@media only screen and (min-width: 600px) {
-  .windbnb--container {
+@media only screen and (min-width: 601px) {
+  .windbnb {
     margin-left: 5rem;
     margin-right: 5rem;
   }
+
+  .windbnb__header {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
 }
 
-.windbnb--logo {
+.windbnb__logo {
   max-width: 69px;
   height: 14px;
 }
 
-.windbnb--header {
-  width: 100%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-}
-
-.windbnb--info {
+.windbnb__info {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -72,7 +78,7 @@ export default {
   margin-bottom: 1rem;
 }
 
-.windbnb--info-country {
+.windbnb__selectedcountry {
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
@@ -80,7 +86,7 @@ export default {
   line-height: 29px;
 }
 
-.windbnb--info-resultCount {
+.windbnb__resultсount {
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;

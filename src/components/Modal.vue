@@ -1,11 +1,11 @@
 <template>
-  <div class="modal--container">
-    <div class="modal--header">
-      <span class="material-icons modal--close-button" v-on:click.stop="close">
+  <div class="modal">
+    <div class="modal__header">
+      <span class="material-icons modal__closebutton" v-on:click.stop="close">
         close
       </span>
     </div>
-    <div class="modal--content">
+    <div class="modal__content">
       <slot></slot>
     </div>
   </div>
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style scoped>
-.modal--container {
+.modal {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -34,7 +34,7 @@ export default {
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
-.modal--close-button {
+.modal__closebutton {
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -42,7 +42,7 @@ export default {
   user-select: none;
 }
 
-.modal--header {
+.modal__header {
   display: flex;
   justify-content: right;
   background-color: #fefefe;
@@ -51,7 +51,7 @@ export default {
   padding-bottom: 20px;
 }
 
-.modal--content {
+.modal__content {
   background-color: #fefefe;
   width: 100%; /* Full width */
   height: 400px;
